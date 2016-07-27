@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  weatherForecastFree
 //
-//  Created by Shahrukh on 7/22/16.
+//  Created by Vaibhav Narkhede on 7/22/16.
 //  Copyright © 2016 DeviseApps. All rights reserved.
 //
 
