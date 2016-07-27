@@ -256,7 +256,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
         
         let date = NSDate(timeIntervalSince1970: weatherListTemp["dt"] as! Double)
         let dayTimePeriodFormatter = NSDateFormatter()
-        dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a"
+        dayTimePeriodFormatter.dateFormat = "MMM dd"
         dayTimePeriodFormatter.timeZone = NSTimeZone.localTimeZone()
         let dateString = dayTimePeriodFormatter.stringFromDate(date)
         cell.dateLabel.text = dateString
