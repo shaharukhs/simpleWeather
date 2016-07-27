@@ -293,10 +293,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
     
     func textFieldDidEndEditing(textField: UITextField) {
         print("TextField did end editing method called:: \(textField)")
+        if(!(textField.text?.isEmpty)!){
         self.cityWithCountryString = textField.text!
+        self.cityWithCountryString = cityWithCountryString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         print("cityWithCountryString:: ",cityWithCountryString)
         self.loadWeatherDataforCurrentCity()
         self.currentWeatherForecast()
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
