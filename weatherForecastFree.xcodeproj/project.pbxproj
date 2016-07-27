@@ -18,7 +18,6 @@
 		CF4809381D4228C800B02C10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4809361D4228C800B02C10 /* LaunchScreen.storyboard */; };
 		CF4809401D4228DF00B02C10 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF48093F1D4228DF00B02C10 /* CoreLocation.framework */; };
 		CF56F53D1D45F80C00324457 /* sunset-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CF56F53C1D45F80C00324457 /* sunset-background.jpg */; };
-		CF56F5401D45FA5100324457 /* refresh-location-fill-512.png in Resources */ = {isa = PBXBuildFile; fileRef = CF56F53F1D45FA5100324457 /* refresh-location-fill-512.png */; };
 		CF56F5461D46167600324457 /* customCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF56F5451D46167600324457 /* customCell.swift */; };
 		F20FDE501D47CC1D003BA90B /* atmosphere.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F20FDE451D47CC1D003BA90B /* atmosphere.jpg */; };
 		F20FDE511D47CC1D003BA90B /* breeze.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F20FDE461D47CC1D003BA90B /* breeze.jpg */; };
@@ -48,7 +47,6 @@
 		CF4809391D4228C800B02C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF48093F1D4228DF00B02C10 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CF56F53C1D45F80C00324457 /* sunset-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sunset-background.jpg"; sourceTree = "<group>"; };
-		CF56F53F1D45FA5100324457 /* refresh-location-fill-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh-location-fill-512.png"; sourceTree = "<group>"; };
 		CF56F5451D46167600324457 /* customCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customCell.swift; sourceTree = "<group>"; };
 		F20FDE451D47CC1D003BA90B /* atmosphere.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = atmosphere.jpg; sourceTree = "<group>"; };
 		F20FDE461D47CC1D003BA90B /* breeze.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = breeze.jpg; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 				F20FDE441D47CBEA003BA90B /* BackgroundImage */,
 				CF56F53C1D45F80C00324457 /* sunset-background.jpg */,
 				CF1D75E71D48909D002AAD90 /* solid-wallpaper2.jpg */,
-				CF56F53F1D45FA5100324457 /* refresh-location-fill-512.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -207,7 +204,6 @@
 				CF1D75EA1D48955D002AAD90 /* cell_bg.png in Resources */,
 				CF1D75E81D48909D002AAD90 /* solid-wallpaper2.jpg in Resources */,
 				CF4809301D4228C800B02C10 /* Main.storyboard in Resources */,
-				CF56F5401D45FA5100324457 /* refresh-location-fill-512.png in Resources */,
 				F20FDE5C1D47CCA1003BA90B /* hail1.jpg in Resources */,
 				F20FDE551D47CC1D003BA90B /* cloudy.jpg in Resources */,
 				CF1D75EC1D4895FE002AAD90 /* Location-96.png in Resources */,

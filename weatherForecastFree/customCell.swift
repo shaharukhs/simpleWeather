@@ -2,7 +2,7 @@
 //  customCell.swift
 //  weatherForecastFree
 //
-//  Created by Vaibhav Narkhede on 7/25/16.
+//  Created by Shahrukh on 7/25/16.
 //  Copyright © 2016 DeviseApps. All rights reserved.
 //
 

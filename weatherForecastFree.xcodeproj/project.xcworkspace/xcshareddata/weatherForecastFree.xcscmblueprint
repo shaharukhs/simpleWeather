@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0347B76E07D2919C7CF0B92CD56C6E0DAB5F1AD4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9BD18C00E19E026D7BC67912B34656143EE30ECB" : 0,
+    "0347B76E07D2919C7CF0B92CD56C6E0DAB5F1AD4" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6670A310-0EF5-431C-A6D6-B3DE3A412F51",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9BD18C00E19E026D7BC67912B34656143EE30ECB" : "weatherForecastFree\/weatherForecastFree\/",
+    "0347B76E07D2919C7CF0B92CD56C6E0DAB5F1AD4" : "weatherForecastFree\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "weatherForecastFree",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "weatherForecastFree.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/shaharukhs\/demoWeather.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0347B76E07D2919C7CF0B92CD56C6E0DAB5F1AD4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/shaharukhs\/demoWeatherSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9BD18C00E19E026D7BC67912B34656143EE30ECB"
+    }
+  ]
+}
