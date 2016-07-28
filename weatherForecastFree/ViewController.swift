@@ -248,7 +248,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
         cell.minTemp.text = String(format: "Min Temp: %02d%@", temp["min"] as! Int,"\u{00B0}")
         cell.weatherCondition.text = String(format: "%@", weatherCondition["main"] as! NSString)
         cell.weatherSubClass.text = String(format: " %@",weatherCondition["description"] as! NSString)
-        cell.humidityLabel.text =  String(format:"Humidity: %02d",weatherListTemp["humidity"] as! Int)
+        cell.humidityLabel.text =  String(format:"Humidity: %02d%@",weatherListTemp["humidity"] as! Int,"%")
         
         let date = NSDate(timeIntervalSince1970: weatherListTemp["dt"] as! Double)
         let dayTimePeriodFormatter = NSDateFormatter()
