@@ -205,6 +205,15 @@
                                     <action selector="reloadLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ce0-DB-b1m"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW8-sX-3Nb">
+                                <rect key="frame" x="143" y="100" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Uq1-Qm-Udy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.30980392159999998" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -227,10 +236,12 @@
                             <constraint firstItem="A96-Bd-Nji" firstAttribute="centerY" secondItem="5M2-pG-j8P" secondAttribute="centerY" id="biQ-Bw-aLO"/>
                             <constraint firstItem="by0-KA-GSX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="40" id="cEJ-1L-7nf"/>
                             <constraint firstAttribute="trailing" secondItem="LV0-WV-03p" secondAttribute="trailing" constant="30" id="cra-uo-Mp2"/>
+                            <constraint firstItem="cW8-sX-3Nb" firstAttribute="top" secondItem="by0-KA-GSX" secondAttribute="bottom" constant="30" id="kdS-T8-Dch"/>
                             <constraint firstItem="A96-Bd-Nji" firstAttribute="leading" secondItem="by0-KA-GSX" secondAttribute="trailing" constant="10" id="l3c-Ju-kG8"/>
                             <constraint firstItem="KsM-QE-Wxx" firstAttribute="leading" secondItem="ojL-LD-lwH" secondAttribute="trailing" constant="5" id="m83-my-1gi"/>
                             <constraint firstItem="A96-Bd-Nji" firstAttribute="centerX" secondItem="5M2-pG-j8P" secondAttribute="centerX" id="n1u-vx-Znb"/>
                             <constraint firstItem="WLd-Qf-OMy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ueX-kt-g5R"/>
+                            <constraint firstItem="cW8-sX-3Nb" firstAttribute="leading" secondItem="KsM-QE-Wxx" secondAttribute="trailing" constant="5" id="wbK-PS-zRX"/>
                             <constraint firstItem="I8O-Sq-dKL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="x9f-ix-Edt"/>
                             <constraint firstItem="by0-KA-GSX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="yPX-cp-yPy"/>
                             <constraint firstAttribute="trailing" secondItem="5M2-pG-j8P" secondAttribute="trailing" constant="10" id="ybX-ny-ovr"/>
@@ -245,6 +256,7 @@
                         <outlet property="currentTempLabel" destination="KsM-QE-Wxx" id="CDo-RY-hez"/>
                         <outlet property="lastupdateWeatherLabel" destination="I8O-Sq-dKL" id="ZMG-Fd-m4x"/>
                         <outlet property="mainWeatherIcon" destination="ojL-LD-lwH" id="ELy-1u-eqE"/>
+                        <outlet property="maxminWeatherlabel" destination="cW8-sX-3Nb" id="Pxh-le-hdf"/>
                         <outlet property="refreshLocation" destination="5M2-pG-j8P" id="fm6-QJ-Ktj"/>
                         <outlet property="searchDisplayController" destination="eGF-3V-YJS" id="PVz-1g-bQa"/>
                         <outlet property="weatherDetailLabel" destination="LV0-WV-03p" id="QRo-Mr-xbG"/>

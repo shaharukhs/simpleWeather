@@ -26,6 +26,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
     @IBOutlet weak var cityNameTextField: UITextField!
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet var lastupdateWeatherLabel: UILabel!
+    @IBOutlet weak var maxminWeatherlabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
@@ -173,11 +174,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
                     
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
                     let currentWeatherList = json["main"] as! NSDictionary
-                    let currentWeatherTemp = currentWeatherList["temp"] as! Int
-                    
                     let weatherDetailsArray = json["weather"] as! NSArray
                     let weatherDetailsTemp:NSDictionary = weatherDetailsArray.objectAtIndex(0) as! NSDictionary
-//                    print("weatherDetailsTemp::", weatherDetailsTemp.valueForKey("main") as! String)
                     let date = NSDate(timeIntervalSince1970: json["dt"] as! Double)
                     let dayTimePeriodFormatter = NSDateFormatter()
                     dayTimePeriodFormatter.dateFormat = "hh:mm a"
@@ -203,10 +201,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
 
                     
                     dispatch_async(dispatch_get_main_queue()) {
-                    self.currentTempLabel.text = String(format: "%02d%@", currentWeatherTemp,"\u{00B0}")
+                    self.currentTempLabel.text = String(format: "%02d%@", currentWeatherList["temp"] as! Int,"\u{00B0}")
                     self.lastupdateWeatherLabel.text = String(format: "Last update: %@",dateString)
                     self.cityName.text = json["name"] as? String
                     self.weatherDetailLabel.text = weatherDetailsTemp.valueForKey("main") as? String
+                    self.maxminWeatherlabel.text = String(format: "%02d%@/%02d%@",currentWeatherList["temp_max"] as! Int,"\u{00B0}",currentWeatherList["temp_min"] as! Int,"\u{00B0}")
                     self.weatherTableView.reloadData()
                     }
 
@@ -240,18 +239,15 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
         let row = indexPath.row
         let weatherListTemp:NSDictionary = self.weatherList[row] as! NSDictionary
         let temp:NSDictionary = weatherListTemp["temp"] as! NSDictionary
-        let currentTempCel = temp["day"] as! Int
-        let maxTempCel = temp["max"] as! Int
-        let minTempCel = temp["min"] as! Int
         let weatherConditionTemp:NSArray = weatherListTemp["weather"] as! NSArray
         let weatherCondition =  (weatherConditionTemp.objectAtIndex(0) as! NSDictionary)
-        let weatherConditionMain = weatherCondition["main"] as! NSString
-        let weatherConditionDescription = weatherCondition["description"] as! NSString
-        cell.currentTemp.text = String(format: "%02d%@", currentTempCel,"\u{00B0}")
-        cell.maxTemp.text = String(format: "Max Temp: %02d%@", maxTempCel,"\u{00B0}")
-        cell.minTemp.text = String(format: "Min Temp: %02d%@", minTempCel,"\u{00B0}")
-        cell.weatherCondition.text = String(format: "%@", weatherConditionMain)
-        cell.weatherSubClass.text = String(format: " %@",weatherConditionDescription)
+        
+        
+        cell.currentTemp.text = String(format: "%02d%@", temp["day"] as! Int,"\u{00B0}")
+        cell.maxTemp.text = String(format: "Max Temp: %02d%@", temp["max"] as! Int,"\u{00B0}")
+        cell.minTemp.text = String(format: "Min Temp: %02d%@", temp["min"] as! Int,"\u{00B0}")
+        cell.weatherCondition.text = String(format: "%@", weatherCondition["main"] as! NSString)
+        cell.weatherSubClass.text = String(format: " %@",weatherCondition["description"] as! NSString)
         cell.humidityLabel.text =  String(format:"Humidity: %02d",weatherListTemp["humidity"] as! Int)
         
         let date = NSDate(timeIntervalSince1970: weatherListTemp["dt"] as! Double)
@@ -276,7 +272,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
             }
         })
         task.resume()
-
 
         return cell
     }
