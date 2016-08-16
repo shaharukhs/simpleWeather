@@ -41,6 +41,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
         self.lastupdateWeatherLabel.text = ""
         self.cityName.text = ""
         self.weatherDetailLabel.text = ""
+        self.maxminWeatherlabel.text = ""
         self.navigationController?.navigationBarHidden = true
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -53,13 +54,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
     
     override func viewWillAppear(animated: Bool) {
         self.cityNameTextField.text = ""
+        
     }
     
 
-    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
-        print("location :: \(locations)")
         
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error)->Void in
             if (error != nil) {
@@ -72,7 +71,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
             placeMark = placemarks?[0]
             
             // Address dictionary
-            print("*********\(placeMark.addressDictionary)\n")
+//            print("*********\(placeMark.addressDictionary)\n")
             // Location name
             if let locationName = placeMark.addressDictionary!["Name"] as? NSString {
                 print("Location Name::\(locationName)")
@@ -115,12 +114,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
     
     func loadWeatherDataforCurrentCity() {
    
-        let modifiedURLString = NSString(format:"http://api.openweathermap.org/data/2.5/forecast/daily?q=%@&cnt=14&APPID=68b9176690783c9ce5057c118eb44970&units=metric", self.cityWithCountryString) as String
-        let url: NSURL = NSURL(string: modifiedURLString)!
-        
-        print("URL for fetch weather report :: \(url)")
-        
-        let request = NSMutableURLRequest(URL: url,
+        let CurrentCityURLString = NSString(format:"http://api.openweathermap.org/data/2.5/forecast/daily?q=%@&cnt=14&APPID=68b9176690783c9ce5057c118eb44970&units=metric", self.cityWithCountryString) as String
+        let CurrentCityURL: NSURL = NSURL(string: CurrentCityURLString)!
+        let request = NSMutableURLRequest(URL: CurrentCityURL,
                                           cachePolicy: .UseProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.HTTPMethod = "GET"
@@ -129,36 +125,25 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
         let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             let httpResponse = response as! NSHTTPURLResponse
             let statusCode = httpResponse.statusCode
-            
             if (statusCode == 200) {
-                
                 do{
-                    
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
-                    
-                    print(json["cnt"] as! Int)
-                
+//                    print(json["cnt"] as! Int)
                     self.weatherList = json["list"] as! NSArray
                     self.weatherTableView.reloadData()
                 }catch {
                     print("Error with Json: \(error)")
                 }
-                
             }
         })
-        
         dataTask.resume()
-
     }
     
     func currentWeatherForecast() {
     
-        let modifiedURLString = NSString(format:"http://api.openweathermap.org/data/2.5/weather?q=%@&appid=68b9176690783c9ce5057c118eb44970&units=metric", self.cityWithCountryString) as String
-        let url: NSURL = NSURL(string: modifiedURLString)!
-        
-        print("URL for fetch weather report :: \(url)")
-        
-        let request = NSMutableURLRequest(URL: url,
+        let currentWeatherURLString = NSString(format:"http://api.openweathermap.org/data/2.5/weather?q=%@&appid=68b9176690783c9ce5057c118eb44970&units=metric", self.cityWithCountryString) as String
+        let currentWeatherURL: NSURL = NSURL(string: currentWeatherURLString)!
+        let request = NSMutableURLRequest(URL: currentWeatherURL,
             cachePolicy: .UseProtocolCachePolicy,
             timeoutInterval: 10.0)
         request.HTTPMethod = "GET"
@@ -167,11 +152,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
         let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             let httpResponse = response as! NSHTTPURLResponse
             let statusCode = httpResponse.statusCode
-            
             if (statusCode == 200) {
-            
                 do{
-                    
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
                     let currentWeatherList = json["main"] as! NSDictionary
                     let weatherDetailsArray = json["weather"] as! NSArray
@@ -181,8 +163,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
                     dayTimePeriodFormatter.dateFormat = "hh:mm a"
                     dayTimePeriodFormatter.timeZone = NSTimeZone.localTimeZone()
                     let dateString = dayTimePeriodFormatter.stringFromDate(date)
-                    
-                    
                     let iconDetails = weatherDetailsTemp.valueForKey("icon") as? String
                     let imgURL = NSURL(string:String(format: "http://openweathermap.org/img/w/%@.png", iconDetails!))
                     let request: NSURLRequest = NSURLRequest(URL: imgURL!)
@@ -198,8 +178,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
                         }
                     })
                     task.resume()
-
-                    
                     dispatch_async(dispatch_get_main_queue()) {
                     self.currentTempLabel.text = String(format: "%02d%@", currentWeatherList["temp"] as! Int,"\u{00B0}")
                     self.lastupdateWeatherLabel.text = String(format: "Last update: %@",dateString)
@@ -208,14 +186,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
                     self.maxminWeatherlabel.text = String(format: "%02d%@/%02d%@",currentWeatherList["temp_max"] as! Int,"\u{00B0}",currentWeatherList["temp_min"] as! Int,"\u{00B0}")
                     self.weatherTableView.reloadData()
                     }
-
                 }catch {
                     print("Error with Json: \(error)")
                 }
-                
             }
         })
-        
         dataTask.resume()
     }
     
@@ -272,7 +247,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
             }
         })
         task.resume()
-
         return cell
     }
     
@@ -280,25 +254,21 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UINavigationBar
             self.weatherTableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    // MARK: Textfield Delegates
+// MARK: Textfield Delegates
     func textFieldDidBeginEditing(textField: UITextField) {
-        print("TextField did begin editing method called")
         self.cityNameTextField.autocapitalizationType = .Words
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        print("TextField did end editing method called:: \(textField)")
         if(!(textField.text?.isEmpty)!){
         self.cityWithCountryString = textField.text!
         self.cityWithCountryString = cityWithCountryString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        print("cityWithCountryString:: ",cityWithCountryString)
         self.loadWeatherDataforCurrentCity()
         self.currentWeatherForecast()
         }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        print("TextField should return method called")
         textField.resignFirstResponder();
         viewWillAppear(true)
         return true;
