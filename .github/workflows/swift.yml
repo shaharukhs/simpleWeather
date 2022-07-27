@@ -2,9 +2,9 @@ name: Swift
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ master ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -12,10 +12,17 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v3
+    #- uses: actions/checkout@v3
+    - uses: maxim-lobanov/setup-xcode@v1
+    # TODO: Fix this
     #- name: Link SwiftLint or install it
      # run: brew link --overwrite swiftlint || brew install swiftlint || brew link --overwrite swiftlint
+      with:
+        xcode-version: latest-stable
     - name: Build
       run: swift build -v
     - name: Run tests
       run: swift test -v
+      
+
+    
