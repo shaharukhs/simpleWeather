@@ -16,7 +16,7 @@ jobs:
     # TODO: Fix this
     #- name: Link SwiftLint or install it
      # run: brew link --overwrite swiftlint || brew install swiftlint || brew link --overwrite swiftlint
-    - name: Force Xcode 11
+    - name: Force Xcode 13
       run: sudo xcode-select -switch /Applications/XXcode_13.2.1.app
     - name: Build
       run: swift build -v
