@@ -17,7 +17,7 @@ jobs:
     #- name: Link SwiftLint or install it
      # run: brew link --overwrite swiftlint || brew install swiftlint || brew link --overwrite swiftlint
     - name: Force Xcode 11
-      run: sudo xcode-select -switch /Applications/Xcode_11.3.app
+      run: sudo xcode-select -switch /Applications/Xcode_11.3.app/Contents/Developer
     - name: Build
       run: swift build -v
     - name: Run tests
