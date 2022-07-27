@@ -12,8 +12,8 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v3
-    #- uses: maxim-lobanov/setup-xcode@v1
+    #- uses: actions/checkout@v3
+    - uses: maxim-lobanov/setup-xcode@v1
     # TODO: Fix this
     #- name: Link SwiftLint or install it
      # run: brew link --overwrite swiftlint || brew install swiftlint || brew link --overwrite swiftlint
